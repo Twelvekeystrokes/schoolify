@@ -13,6 +13,16 @@ path = os.getcwd() + '/sprites/'
 ########################
 # IMAGE ASSETS
 
+## endgame
+endFood = pygame.image.load(path + 'endscreen/endgamefood1.png')
+congrats = pygame.image.load(path + 'endscreen/congratulations.png')
+endGrade1 = pygame.image.load(path + 'endscreen/endgamegrade1.png')
+endGrade2 = pygame.image.load(path + 'endscreen/endgamegrade2.png')
+endSleep1 = pygame.image.load(path + 'endscreen/endgamesleep1.png')
+endSleep2 = pygame.image.load(path + 'endscreen/endgamesleep2.png')
+endSocial1 = pygame.image.load(path + 'endscreen/endgamesocial1.png')
+endSocial2 = pygame.image.load(path + 'endscreen/endgamesocial2.png')
+
 ## food game
 bgFood = pygame.image.load(path + 'food/food background.png')
 foodBurger = pygame.image.load(path + 'food/burger.png')
@@ -86,7 +96,7 @@ sleepIntro = False
 speechIntro = False
 foodThreshold = 15
 sleepThreshold = 25
-speechThreshold = 50
+speechThreshold = 45
 
 def pausedGame():
     global pause_time
@@ -195,6 +205,8 @@ def game():
     textPassed = 0
     textStart = 0
     heart_y = -80
+    firstgo = True
+    timeEnd = False
     
     while playing:
         while not gameStop: #because steam is better
@@ -316,7 +328,11 @@ def game():
                         if up == 0:
                             speechEnd = False
                         else:
-                            speechEnd = True                        
+                            speechEnd = True
+
+                    ## pause
+                    if event.key == K_p:
+                        pausedGame()
                 #    
                 #######
 
@@ -345,11 +361,14 @@ def game():
                     introSpeech()
                     speechIntro = True
                     speechEnd = True
+                    firstgo = True
                 if textPassed > textTime:
                     speech = False
-                    if speechEnd:
+                    if speechEnd and not firstgo:
                         gameStop = True
                         break
+                    elif speechEnd:
+                        firstgo = False
                     up = randint(0, 1)
                     if not speechEnd:
                         if up == 0:
@@ -382,15 +401,40 @@ def game():
 
             if not gradeIntro:
                 introGrades()
-                gradeIntro = True
-
-        
+                gradeIntro = True        
             
             pygame.display.update()
             clock.tick(60)
 
+        canvas.fill((255, 255, 255))
+        pygame.time.delay(3000)
+        if timeEnd:
+            canvas.blit(congrats, (257, 258))
+        elif foodEnd:
+            canvas.blit(endFood, (257, 258))
+        elif sleepEnd:
+            x = randint(1, 2)
+            if x == 1:
+                canvas.blit(endSleep1, (257, 258))
+            else:
+                canvas.blit(endSleep2, (257, 258))
+        elif speechEnd:
+            x = randint(1, 2)
+            if x == 1:
+                canvas.blit(endSocial1, (257, 258))
+            else:
+                canvas.blit(endSocial2, (257, 258))
+        elif gradeEnd:
+            x = randint(1, 2)
+            if x == 1:
+                canvas.blit(endGrade1, (257, 258))
+            else:
+                canvas.blit(endGrade2, (257, 258))
+                
+        pygame.display.update()
+        pygame.time.delay(10000)
         pygame.quit()
+        break
 
 pygame.init()
 game()
-pygame.quit()
