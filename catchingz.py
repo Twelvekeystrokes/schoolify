@@ -19,7 +19,7 @@ imgFacebook = pygame.image.load('/Users/joshua/sHacks/images/facebook.png')
 imgSnapchat = pygame.image.load('/Users/joshua/sHacks/images/snapchat.png')
 imgTwitter = pygame.image.load('/Users/joshua/sHacks/images/snapchat.png')
 pillow = pygame.image.load('/Users/joshua/sHacks/images/pillow.png')
-
+background = pygame.image.load('/Users/joshua/sHacks/images/background.png')
 
 clock = pygame.time.Clock()
 
@@ -33,11 +33,13 @@ def obstacleGen():
     return randColumn
 
 def randImage():
-    image = randint(1, 3)
+    image = randint(1, 4)
     if (image == 1):
         return imgInstagram
     elif (image == 2):
         return imgFacebook
+    elif (image == 3):
+        return imgTwitter
     else:
         return imgSnapchat
 
@@ -61,7 +63,7 @@ def gameZ():
                     if (playerColumn < 3):
                         playerColumn += 1
 
-        if (obstacle_y > zero_y + 700):
+        if (obstacle_y > zero_y + 500):
             obsColumn = obstacleGen()
             obstacle_y = zero_y - 80
             img = randImage()
@@ -72,7 +74,7 @@ def gameZ():
         obstacle_y += fallSpeed
         obstacle_x = zero_x + (obsColumn - 1) * 133 + 27
 
-        gameDisplay.fill(gray)
+        gameDisplay.blit(background, (zero_x, zero_y))
 
         gameDisplay.blit(img, (obstacle_x, obstacle_y))
         gameDisplay.blit(pillow, ((zero_x + (playerColumn - 1) * 133 + 27),
