@@ -6,7 +6,7 @@ from math import *
 dh = 800
 dw = 800
 
-canvas = pygame.display.set_mode((display_width, display_height))
+canvas = pygame.display.set_mode((dw, dh))
 
 path = os.getcwd() + '/sprites/'
 
@@ -46,7 +46,6 @@ gradeCorrect = pygame.image.load(path + 'grades/checkmark.png')
 gradeWrong = pygame.image.load(path + 'grades/X.png')
 
 ## speech game
-
 bgSpeech = pygame.image.load(path + 'speech/background.png')
 downText = []
 upText = []
@@ -64,12 +63,10 @@ infoSleep = pygame.image.load(path + 'infoSleep.png')
 bgInfo = pygame.image.load(path + 'introbackground.png')
 
 ## border
-
 border1 = pygame.image.load(path + 'frame1.png')
 border2 = pygame.image.load(path + 'frame2.png')
 
-#
-#########################
+##########################
 
 white = (255, 255, 255)
 gray = (169, 169, 169)
@@ -109,7 +106,7 @@ def pausedGame():
                 quit()
             if event.type == KEYDOWN and event.key == K_RETURN:
                 paused = False
-    pause_time = pygame.time.get_ticks()/1000 - pause_start
+    pause_time += pygame.time.get_ticks()/1000 - pause_start
 
 ################# INFORMATION FOR GAMES
 #
