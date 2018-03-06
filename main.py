@@ -3,8 +3,8 @@ from random import *
 from pygame.locals import *
 from math import *
 
-display_width = 800
-display_height = 800
+dh = 800
+dw = 800
 
 canvas = pygame.display.set_mode((display_width, display_height))
 
