@@ -11,4 +11,5 @@ up4thetask is a multitasking game that lets the user play up to four different m
 
 ## Acknowledgments
 Created in collaboration with Joshua Du, Stephen Hwang, Gary Chen, Junwen Jiang, Alice Peng
-Game written with pygame ("pygame.org")
+
+Game written using pygame ("pygame.org")
