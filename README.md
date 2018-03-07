@@ -9,7 +9,20 @@ Thus, we, up4thechallenge, have gamified the school work/life balance in post-se
 ## What is it?
 up4thetask is a multitasking game that lets the user play up to four different minigames at once. Also, these games are closely related to the university life. Common themes are based around food/nutrition, marks, romantic relationships, and getitng proper sleep. 
 
+## Technologies
+- Pygame via Python to program the mechanics and graphics of the game
+- HTML, CSS, Bootstrap to create a mobile friendly landing page
+- (Insert Drawing technology)
+
+## How to Use
+1. Download and extract zip file
+2. Ensure python 3.6.4+ is installed
+3. Enter "py -m pip install -U pygame --user" into command prompt
+4. Run main.py in the extracted folder
+
+(Instruction for windows only)
+
 ## Acknowledgments
 Created in collaboration with Joshua Du, Stephen Hwang, Gary Chen, Junwen Jiang, Alice Peng
 
-Game written using pygame ("pygame.org")
+Game written using pygame (pygame.org)
